@@ -9,7 +9,7 @@ class Graph{
         v=node;
         adjList=new list<int>[v];
     }
-    void addEdge(int u,int v,bool bidir=false){
+    void addEdge(int u,int v,bool bidir=true){
         adjList[u].push_back(v);
         if(bidir){
             adjList[v].push_back(u);
@@ -27,9 +27,9 @@ class Graph{
     void bfs(int src,int destination){
         queue<int>q;
         q.push(src);
-        bool *visited=new bool[v]{0};
-        int *distance=new int[v]{0};
-        int *parent=new int[v];
+        bool *visited=new bool[v+1]{0};
+        int *distance=new int[v+1]{0};
+        int *parent=new int[v+1];
         for(int i=0;i<v;i++){
             parent[i]=-1;
         }
@@ -49,7 +49,7 @@ class Graph{
         }
         cout<<endl;
         for(int i=0;i<v;i++){
-            cout<<"node "<<i<<" is having the distance from source "<<distance[i]<<endl;
+            cout<<i<<" is having the distance from source "<<distance[i]<<endl;
         }
         int temp=destination;
         while(temp!=-1){
@@ -65,7 +65,7 @@ int main(){
     g.addEdge(0,4);
     g.addEdge(2,4);
     g.addEdge(3,2);
-    g.addEdge(2,3);
+  //  g.addEdge(2,3);
     g.addEdge(3,5);
     g.addEdge(3,4);
    // g.print();
